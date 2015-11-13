@@ -1,0 +1,2 @@
+# iOSInsPrivateSecret
+SecretAPI
