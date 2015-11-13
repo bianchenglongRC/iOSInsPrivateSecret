@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYi-LU-qnN">
+                                <rect key="frame" x="129" y="168" width="63" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Post Like">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postLike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uDn-Ok-4sA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxT-S7-3w0">
+                                <rect key="frame" x="117" y="130" width="87" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Ins登录">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="InsLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZCE-s2-Oqq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXO-ww-EKp">
+                                <rect key="frame" x="121" y="200" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Post Follow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postFollow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dOu-aF-mNx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-FI-Dt3">
+                                <rect key="frame" x="131" y="231" width="58" height="30"/>
+                                <animations/>
+                                <state key="normal" title="sentMail"/>
+                                <connections>
+                                    <action selector="sendMailClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhr-86-z0t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1E-3Z-vCh">
+                                <rect key="frame" x="117" y="269" width="87" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Click Like"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instagram ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XaI-6A-QYT">
+                                <rect key="frame" x="84" y="13" width="152" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instagram Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-Uz-QAQ">
+                                <rect key="frame" x="84" y="68" width="152" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-Ud-8sn">
+                                <rect key="frame" x="36" y="344" width="248" height="216"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XaI-6A-QYT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0ck-ME-CJA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LRe-Ud-8sn" secondAttribute="bottom" constant="8" id="0xB-IA-cQV"/>
+                            <constraint firstItem="iMJ-FI-Dt3" firstAttribute="top" secondItem="ZXO-ww-EKp" secondAttribute="bottom" constant="1" id="599-8V-X8O"/>
+                            <constraint firstItem="LRe-Ud-8sn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="99z-Rj-X3V"/>
+                            <constraint firstItem="XaI-6A-QYT" firstAttribute="leading" secondItem="DbN-Uz-QAQ" secondAttribute="leading" id="IQc-fY-mNF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yxT-S7-3w0" secondAttribute="trailing" constant="100" id="Kgh-iq-d9J"/>
+                            <constraint firstItem="DbN-Uz-QAQ" firstAttribute="top" secondItem="XaI-6A-QYT" secondAttribute="bottom" constant="25" id="Pha-Vs-9Rd"/>
+                            <constraint firstItem="iMJ-FI-Dt3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QzY-XZ-I9X"/>
+                            <constraint firstItem="cYi-LU-qnN" firstAttribute="top" secondItem="yxT-S7-3w0" secondAttribute="bottom" constant="8" id="Rwh-UD-Bki"/>
+                            <constraint firstItem="XaI-6A-QYT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="13" id="UvJ-cy-1DP"/>
+                            <constraint firstItem="ZXO-ww-EKp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wry-IO-Dls"/>
+                            <constraint firstItem="G1E-3Z-vCh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="0.5" id="X7d-wH-6FV"/>
+                            <constraint firstItem="DbN-Uz-QAQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XrX-6F-9SE"/>
+                            <constraint firstItem="LRe-Ud-8sn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ycw-Zq-KMO"/>
+                            <constraint firstItem="yxT-S7-3w0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="dy1-kb-rsc"/>
+                            <constraint firstItem="yxT-S7-3w0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="101" id="gIT-Ly-OuJ"/>
+                            <constraint firstItem="cYi-LU-qnN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iAu-u1-euP"/>
+                            <constraint firstItem="ZXO-ww-EKp" firstAttribute="top" secondItem="cYi-LU-qnN" secondAttribute="bottom" constant="2" id="oTw-hN-aPY"/>
+                            <constraint firstItem="LRe-Ud-8sn" firstAttribute="top" secondItem="iMJ-FI-Dt3" secondAttribute="bottom" constant="83" id="r3E-rW-fVm"/>
+                            <constraint firstItem="G1E-3Z-vCh" firstAttribute="leading" secondItem="yxT-S7-3w0" secondAttribute="leading" id="sbb-Tc-xGy"/>
+                            <constraint firstItem="XaI-6A-QYT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="68" id="w6u-UX-anx"/>
+                            <constraint firstItem="yxT-S7-3w0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w9V-RD-uBj"/>
+                            <constraint firstItem="LRe-Ud-8sn" firstAttribute="top" secondItem="G1E-3Z-vCh" secondAttribute="bottom" constant="45" id="yiz-kR-pMJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="InsLoginBtn" destination="yxT-S7-3w0" id="Yi2-zV-6mV"/>
+                        <outlet property="insLoginBtn" destination="yxT-S7-3w0" id="goy-Ht-sGX"/>
+                        <outlet property="postFollowBtn" destination="ZXO-ww-EKp" id="V3H-c9-tWe"/>
+                        <outlet property="postLikeBtn" destination="cYi-LU-qnN" id="L17-EH-c5b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117" y="330"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,811 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		130329261BF3474600D97413 /* PresentControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130329241BF3474600D97413 /* PresentControllerViewController.m */; };
+		130329271BF3474600D97413 /* PresentControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130329251BF3474600D97413 /* PresentControllerViewController.xib */; };
+		133FA0A51B9D357E00B02EBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A41B9D357E00B02EBD /* main.m */; };
+		133FA0A81B9D357E00B02EBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A71B9D357E00B02EBD /* AppDelegate.m */; };
+		133FA0AB1B9D357E00B02EBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0AA1B9D357E00B02EBD /* ViewController.m */; };
+		133FA0AE1B9D357E00B02EBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133FA0AC1B9D357E00B02EBD /* Main.storyboard */; };
+		133FA0B01B9D357E00B02EBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133FA0AF1B9D357E00B02EBD /* Images.xcassets */; };
+		133FA0B31B9D357E00B02EBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133FA0B11B9D357E00B02EBD /* LaunchScreen.xib */; };
+		133FA0BF1B9D357E00B02EBD /* InstagramAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0BE1B9D357E00B02EBD /* InstagramAPITests.m */; };
+		133FA0DF1B9D35D500B02EBD /* CMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0CA1B9D35D500B02EBD /* CMethods.m */; };
+		133FA0E61B9D35D500B02EBD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0DD1B9D35D500B02EBD /* MBProgressHUD.m */; };
+		133FA10E1B9D606400B02EBD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA10D1B9D606400B02EBD /* CFNetwork.framework */; };
+		133FA1101B9D606C00B02EBD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA10F1B9D606C00B02EBD /* SystemConfiguration.framework */; };
+		133FA1121B9D607500B02EBD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA1111B9D607500B02EBD /* Security.framework */; };
+		133FA1141B9D60D900B02EBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA1131B9D60D900B02EBD /* UIKit.framework */; };
+		133FA1161B9D61A300B02EBD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA1151B9D61A300B02EBD /* QuartzCore.framework */; };
+		133FA1181B9D61B700B02EBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA1171B9D61B700B02EBD /* Foundation.framework */; };
+		133FA11A1B9D61D000B02EBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 133FA1191B9D61D000B02EBD /* CoreGraphics.framework */; };
+		133FA1511B9D63F000B02EBD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA13F1B9D63F000B02EBD /* AFHTTPRequestOperation.m */; };
+		133FA1521B9D63F000B02EBD /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA1411B9D63F000B02EBD /* AFHTTPRequestOperationManager.m */; };
+		133FA1531B9D63F000B02EBD /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA1431B9D63F000B02EBD /* AFHTTPSessionManager.m */; };
+		133FA1541B9D63F000B02EBD /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA1461B9D63F000B02EBD /* AFNetworkReachabilityManager.m */; };
+		133FA1551B9D63F000B02EBD /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA1481B9D63F000B02EBD /* AFSecurityPolicy.m */; };
+		133FA1561B9D63F000B02EBD /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA14A1B9D63F000B02EBD /* AFURLConnectionOperation.m */; };
+		133FA1571B9D63F000B02EBD /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA14C1B9D63F000B02EBD /* AFURLRequestSerialization.m */; };
+		133FA1581B9D63F000B02EBD /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA14E1B9D63F000B02EBD /* AFURLResponseSerialization.m */; };
+		133FA1591B9D63F000B02EBD /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA1501B9D63F000B02EBD /* AFURLSessionManager.m */; };
+		136FFB0E1B9EE44300BA06D2 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFAF61B9EE44300BA06D2 /* NSObject+SBJson.m */; };
+		136FFB0F1B9EE44300BA06D2 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFAF91B9EE44300BA06D2 /* SBJsonParser.m */; };
+		136FFB101B9EE44300BA06D2 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFAFB1B9EE44300BA06D2 /* SBJsonStreamParser.m */; };
+		136FFB111B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFAFD1B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.m */; };
+		136FFB121B9EE44300BA06D2 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFAFF1B9EE44300BA06D2 /* SBJsonStreamParserAdapter.m */; };
+		136FFB131B9EE44300BA06D2 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB011B9EE44300BA06D2 /* SBJsonStreamParserState.m */; };
+		136FFB141B9EE44300BA06D2 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB031B9EE44300BA06D2 /* SBJsonStreamWriter.m */; };
+		136FFB151B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB051B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m */; };
+		136FFB161B9EE44300BA06D2 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB071B9EE44300BA06D2 /* SBJsonStreamWriterState.m */; };
+		136FFB171B9EE44300BA06D2 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB091B9EE44300BA06D2 /* SBJsonTokeniser.m */; };
+		136FFB181B9EE44300BA06D2 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB0B1B9EE44300BA06D2 /* SBJsonUTF8Stream.m */; };
+		136FFB191B9EE44300BA06D2 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 136FFB0D1B9EE44300BA06D2 /* SBJsonWriter.m */; };
+		138AAE841BDDE19300A53436 /* AFInstagramManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 138AAE7F1BDDE19300A53436 /* AFInstagramManager.m */; };
+		138AAE851BDDE19300A53436 /* NSMutableData+generatePostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 138AAE811BDDE19300A53436 /* NSMutableData+generatePostBody.m */; };
+		138AAE861BDDE19300A53436 /* NSString+SigString.m in Sources */ = {isa = PBXBuildFile; fileRef = 138AAE831BDDE19300A53436 /* NSString+SigString.m */; };
+		138AAE891BDE02F500A53436 /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 138AAE881BDE02F500A53436 /* RC_RequestManager.m */; };
+		138B5E711BCCEA10002874FB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138B5E701BCCEA10002874FB /* MessageUI.framework */; };
+		13A8EECA1BDE255F009C7140 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEC91BDE255F009C7140 /* Reachability.m */; };
+		13A8EED41BDE27FC009C7140 /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EED31BDE27FC009C7140 /* OrderItem.m */; };
+		13A8EEEF1BDF2FD7009C7140 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEE31BDF2FD7009C7140 /* ModelBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		13A8EEF01BDF2FD7009C7140 /* ModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEE51BDF2FD7009C7140 /* ModelList.m */; };
+		13A8EEF11BDF2FD7009C7140 /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEE81BDF2FD7009C7140 /* NSArray+Extension.m */; };
+		13A8EEF21BDF2FD7009C7140 /* NSObject+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEEA1BDF2FD7009C7140 /* NSObject+Extention.m */; };
+		13A8EEF31BDF2FD7009C7140 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEEC1BDF2FD7009C7140 /* UIColor+Extension.m */; };
+		13A8EEF41BDF2FD7009C7140 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEEE1BDF2FD7009C7140 /* UIColor+HEX.m */; };
+		13A8EEF71BDF304C009C7140 /* FollowOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A8EEF61BDF304C009C7140 /* FollowOrderList.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		133FA0B91B9D357E00B02EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 133FA0971B9D357E00B02EBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 133FA09E1B9D357E00B02EBD;
+			remoteInfo = InstagramAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		130329231BF3474600D97413 /* PresentControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentControllerViewController.h; sourceTree = "<group>"; };
+		130329241BF3474600D97413 /* PresentControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentControllerViewController.m; sourceTree = "<group>"; };
+		130329251BF3474600D97413 /* PresentControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentControllerViewController.xib; sourceTree = "<group>"; };
+		133FA09F1B9D357E00B02EBD /* InstagramAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		133FA0A31B9D357E00B02EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		133FA0A41B9D357E00B02EBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		133FA0A61B9D357E00B02EBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		133FA0A71B9D357E00B02EBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		133FA0A91B9D357E00B02EBD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		133FA0AA1B9D357E00B02EBD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		133FA0AD1B9D357E00B02EBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		133FA0AF1B9D357E00B02EBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		133FA0B21B9D357E00B02EBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		133FA0B81B9D357E00B02EBD /* InstagramAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		133FA0BD1B9D357E00B02EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		133FA0BE1B9D357E00B02EBD /* InstagramAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramAPITests.m; sourceTree = "<group>"; };
+		133FA0C91B9D35D500B02EBD /* CMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMethods.h; sourceTree = "<group>"; };
+		133FA0CA1B9D35D500B02EBD /* CMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMethods.m; sourceTree = "<group>"; };
+		133FA0D11B9D35D500B02EBD /* Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
+		133FA0DC1B9D35D500B02EBD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		133FA0DD1B9D35D500B02EBD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		133FA0DE1B9D35D500B02EBD /* Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
+		133FA10D1B9D606400B02EBD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		133FA10F1B9D606C00B02EBD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		133FA1111B9D607500B02EBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		133FA1131B9D60D900B02EBD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		133FA1151B9D61A300B02EBD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		133FA1171B9D61B700B02EBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		133FA1191B9D61D000B02EBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		133FA13E1B9D63F000B02EBD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		133FA13F1B9D63F000B02EBD /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		133FA1401B9D63F000B02EBD /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		133FA1411B9D63F000B02EBD /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		133FA1421B9D63F000B02EBD /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		133FA1431B9D63F000B02EBD /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		133FA1441B9D63F000B02EBD /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		133FA1451B9D63F000B02EBD /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		133FA1461B9D63F000B02EBD /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		133FA1471B9D63F000B02EBD /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		133FA1481B9D63F000B02EBD /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		133FA1491B9D63F000B02EBD /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		133FA14A1B9D63F000B02EBD /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		133FA14B1B9D63F000B02EBD /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		133FA14C1B9D63F000B02EBD /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		133FA14D1B9D63F000B02EBD /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		133FA14E1B9D63F000B02EBD /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		133FA14F1B9D63F000B02EBD /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		133FA1501B9D63F000B02EBD /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		136FFAF51B9EE44300BA06D2 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		136FFAF61B9EE44300BA06D2 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		136FFAF71B9EE44300BA06D2 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		136FFAF81B9EE44300BA06D2 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		136FFAF91B9EE44300BA06D2 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		136FFAFA1B9EE44300BA06D2 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		136FFAFB1B9EE44300BA06D2 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		136FFAFC1B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		136FFAFD1B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		136FFAFE1B9EE44300BA06D2 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		136FFAFF1B9EE44300BA06D2 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		136FFB001B9EE44300BA06D2 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		136FFB011B9EE44300BA06D2 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		136FFB021B9EE44300BA06D2 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		136FFB031B9EE44300BA06D2 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		136FFB041B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		136FFB051B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		136FFB061B9EE44300BA06D2 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		136FFB071B9EE44300BA06D2 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		136FFB081B9EE44300BA06D2 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		136FFB091B9EE44300BA06D2 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		136FFB0A1B9EE44300BA06D2 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		136FFB0B1B9EE44300BA06D2 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		136FFB0C1B9EE44300BA06D2 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		136FFB0D1B9EE44300BA06D2 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		138AAE7E1BDDE19300A53436 /* AFInstagramManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFInstagramManager.h; sourceTree = "<group>"; };
+		138AAE7F1BDDE19300A53436 /* AFInstagramManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFInstagramManager.m; sourceTree = "<group>"; };
+		138AAE801BDDE19300A53436 /* NSMutableData+generatePostBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+generatePostBody.h"; sourceTree = "<group>"; };
+		138AAE811BDDE19300A53436 /* NSMutableData+generatePostBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+generatePostBody.m"; sourceTree = "<group>"; };
+		138AAE821BDDE19300A53436 /* NSString+SigString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SigString.h"; sourceTree = "<group>"; };
+		138AAE831BDDE19300A53436 /* NSString+SigString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SigString.m"; sourceTree = "<group>"; };
+		138AAE871BDE02F500A53436 /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
+		138AAE881BDE02F500A53436 /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
+		138B21C81BDE056B00DC9EA9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		138B5E701BCCEA10002874FB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		13A8EEC81BDE255F009C7140 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		13A8EEC91BDE255F009C7140 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		13A8EED21BDE27FC009C7140 /* OrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItem.h; sourceTree = "<group>"; };
+		13A8EED31BDE27FC009C7140 /* OrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItem.m; sourceTree = "<group>"; };
+		13A8EEE21BDF2FD7009C7140 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
+		13A8EEE31BDF2FD7009C7140 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBase.m; sourceTree = "<group>"; };
+		13A8EEE41BDF2FD7009C7140 /* ModelList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelList.h; sourceTree = "<group>"; };
+		13A8EEE51BDF2FD7009C7140 /* ModelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelList.m; sourceTree = "<group>"; };
+		13A8EEE71BDF2FD7009C7140 /* NSArray+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extension.h"; sourceTree = "<group>"; };
+		13A8EEE81BDF2FD7009C7140 /* NSArray+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extension.m"; sourceTree = "<group>"; };
+		13A8EEE91BDF2FD7009C7140 /* NSObject+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Extention.h"; sourceTree = "<group>"; };
+		13A8EEEA1BDF2FD7009C7140 /* NSObject+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Extention.m"; sourceTree = "<group>"; };
+		13A8EEEB1BDF2FD7009C7140 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		13A8EEEC1BDF2FD7009C7140 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		13A8EEED1BDF2FD7009C7140 /* UIColor+HEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEX.h"; sourceTree = "<group>"; };
+		13A8EEEE1BDF2FD7009C7140 /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
+		13A8EEF51BDF304C009C7140 /* FollowOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowOrderList.h; sourceTree = "<group>"; };
+		13A8EEF61BDF304C009C7140 /* FollowOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowOrderList.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		133FA09C1B9D357E00B02EBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138B5E711BCCEA10002874FB /* MessageUI.framework in Frameworks */,
+				133FA11A1B9D61D000B02EBD /* CoreGraphics.framework in Frameworks */,
+				133FA1181B9D61B700B02EBD /* Foundation.framework in Frameworks */,
+				133FA1161B9D61A300B02EBD /* QuartzCore.framework in Frameworks */,
+				133FA1141B9D60D900B02EBD /* UIKit.framework in Frameworks */,
+				133FA1121B9D607500B02EBD /* Security.framework in Frameworks */,
+				133FA1101B9D606C00B02EBD /* SystemConfiguration.framework in Frameworks */,
+				133FA10E1B9D606400B02EBD /* CFNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		133FA0B51B9D357E00B02EBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		133FA0961B9D357E00B02EBD = {
+			isa = PBXGroup;
+			children = (
+				133FA0A11B9D357E00B02EBD /* InstagramAPI */,
+				133FA0BB1B9D357E00B02EBD /* InstagramAPITests */,
+				133FA0A01B9D357E00B02EBD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		133FA0A01B9D357E00B02EBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				133FA09F1B9D357E00B02EBD /* InstagramAPI.app */,
+				133FA0B81B9D357E00B02EBD /* InstagramAPITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		133FA0A11B9D357E00B02EBD /* InstagramAPI */ = {
+			isa = PBXGroup;
+			children = (
+				138AAE7D1BDDE19300A53436 /* AFRequest */,
+				136FFAF41B9EE44300BA06D2 /* Classes */,
+				133FA13D1B9D63F000B02EBD /* AFNetworking */,
+				133FA0C81B9D35D500B02EBD /* C Methods */,
+				133FA0DB1B9D35D500B02EBD /* MBProgressHUD */,
+				138B21C81BDE056B00DC9EA9 /* PrefixHeader.pch */,
+				133FA0DE1B9D35D500B02EBD /* Public.h */,
+				133FA0A61B9D357E00B02EBD /* AppDelegate.h */,
+				133FA0A71B9D357E00B02EBD /* AppDelegate.m */,
+				133FA0A91B9D357E00B02EBD /* ViewController.h */,
+				133FA0AA1B9D357E00B02EBD /* ViewController.m */,
+				133FA0AC1B9D357E00B02EBD /* Main.storyboard */,
+				130329231BF3474600D97413 /* PresentControllerViewController.h */,
+				130329241BF3474600D97413 /* PresentControllerViewController.m */,
+				130329251BF3474600D97413 /* PresentControllerViewController.xib */,
+				133FA0AF1B9D357E00B02EBD /* Images.xcassets */,
+				133FA0B11B9D357E00B02EBD /* LaunchScreen.xib */,
+				133FA0A21B9D357E00B02EBD /* Supporting Files */,
+			);
+			path = InstagramAPI;
+			sourceTree = "<group>";
+		};
+		133FA0A21B9D357E00B02EBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				133FA0A31B9D357E00B02EBD /* Info.plist */,
+				133FA0A41B9D357E00B02EBD /* main.m */,
+				138B5E701BCCEA10002874FB /* MessageUI.framework */,
+				133FA1191B9D61D000B02EBD /* CoreGraphics.framework */,
+				133FA1171B9D61B700B02EBD /* Foundation.framework */,
+				133FA1151B9D61A300B02EBD /* QuartzCore.framework */,
+				133FA1131B9D60D900B02EBD /* UIKit.framework */,
+				133FA1111B9D607500B02EBD /* Security.framework */,
+				133FA10F1B9D606C00B02EBD /* SystemConfiguration.framework */,
+				133FA10D1B9D606400B02EBD /* CFNetwork.framework */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		133FA0BB1B9D357E00B02EBD /* InstagramAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				133FA0BE1B9D357E00B02EBD /* InstagramAPITests.m */,
+				133FA0BC1B9D357E00B02EBD /* Supporting Files */,
+			);
+			path = InstagramAPITests;
+			sourceTree = "<group>";
+		};
+		133FA0BC1B9D357E00B02EBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				133FA0BD1B9D357E00B02EBD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		133FA0C81B9D35D500B02EBD /* C Methods */ = {
+			isa = PBXGroup;
+			children = (
+				133FA0C91B9D35D500B02EBD /* CMethods.h */,
+				133FA0CA1B9D35D500B02EBD /* CMethods.m */,
+				133FA0D11B9D35D500B02EBD /* Public.h */,
+			);
+			path = "C Methods";
+			sourceTree = "<group>";
+		};
+		133FA0DB1B9D35D500B02EBD /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				133FA0DC1B9D35D500B02EBD /* MBProgressHUD.h */,
+				133FA0DD1B9D35D500B02EBD /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		133FA13D1B9D63F000B02EBD /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				133FA13E1B9D63F000B02EBD /* AFHTTPRequestOperation.h */,
+				133FA13F1B9D63F000B02EBD /* AFHTTPRequestOperation.m */,
+				133FA1401B9D63F000B02EBD /* AFHTTPRequestOperationManager.h */,
+				133FA1411B9D63F000B02EBD /* AFHTTPRequestOperationManager.m */,
+				133FA1421B9D63F000B02EBD /* AFHTTPSessionManager.h */,
+				133FA1431B9D63F000B02EBD /* AFHTTPSessionManager.m */,
+				133FA1441B9D63F000B02EBD /* AFNetworking.h */,
+				133FA1451B9D63F000B02EBD /* AFNetworkReachabilityManager.h */,
+				133FA1461B9D63F000B02EBD /* AFNetworkReachabilityManager.m */,
+				133FA1471B9D63F000B02EBD /* AFSecurityPolicy.h */,
+				133FA1481B9D63F000B02EBD /* AFSecurityPolicy.m */,
+				133FA1491B9D63F000B02EBD /* AFURLConnectionOperation.h */,
+				133FA14A1B9D63F000B02EBD /* AFURLConnectionOperation.m */,
+				133FA14B1B9D63F000B02EBD /* AFURLRequestSerialization.h */,
+				133FA14C1B9D63F000B02EBD /* AFURLRequestSerialization.m */,
+				133FA14D1B9D63F000B02EBD /* AFURLResponseSerialization.h */,
+				133FA14E1B9D63F000B02EBD /* AFURLResponseSerialization.m */,
+				133FA14F1B9D63F000B02EBD /* AFURLSessionManager.h */,
+				133FA1501B9D63F000B02EBD /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		136FFAF41B9EE44300BA06D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				136FFAF51B9EE44300BA06D2 /* NSObject+SBJson.h */,
+				136FFAF61B9EE44300BA06D2 /* NSObject+SBJson.m */,
+				136FFAF71B9EE44300BA06D2 /* SBJson.h */,
+				136FFAF81B9EE44300BA06D2 /* SBJsonParser.h */,
+				136FFAF91B9EE44300BA06D2 /* SBJsonParser.m */,
+				136FFAFA1B9EE44300BA06D2 /* SBJsonStreamParser.h */,
+				136FFAFB1B9EE44300BA06D2 /* SBJsonStreamParser.m */,
+				136FFAFC1B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.h */,
+				136FFAFD1B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.m */,
+				136FFAFE1B9EE44300BA06D2 /* SBJsonStreamParserAdapter.h */,
+				136FFAFF1B9EE44300BA06D2 /* SBJsonStreamParserAdapter.m */,
+				136FFB001B9EE44300BA06D2 /* SBJsonStreamParserState.h */,
+				136FFB011B9EE44300BA06D2 /* SBJsonStreamParserState.m */,
+				136FFB021B9EE44300BA06D2 /* SBJsonStreamWriter.h */,
+				136FFB031B9EE44300BA06D2 /* SBJsonStreamWriter.m */,
+				136FFB041B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.h */,
+				136FFB051B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m */,
+				136FFB061B9EE44300BA06D2 /* SBJsonStreamWriterState.h */,
+				136FFB071B9EE44300BA06D2 /* SBJsonStreamWriterState.m */,
+				136FFB081B9EE44300BA06D2 /* SBJsonTokeniser.h */,
+				136FFB091B9EE44300BA06D2 /* SBJsonTokeniser.m */,
+				136FFB0A1B9EE44300BA06D2 /* SBJsonUTF8Stream.h */,
+				136FFB0B1B9EE44300BA06D2 /* SBJsonUTF8Stream.m */,
+				136FFB0C1B9EE44300BA06D2 /* SBJsonWriter.h */,
+				136FFB0D1B9EE44300BA06D2 /* SBJsonWriter.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		138AAE7D1BDDE19300A53436 /* AFRequest */ = {
+			isa = PBXGroup;
+			children = (
+				13A8EECB1BDE25C8009C7140 /* Model */,
+				13A8EEC71BDE255F009C7140 /* Reachability */,
+				138AAE871BDE02F500A53436 /* RC_RequestManager.h */,
+				138AAE881BDE02F500A53436 /* RC_RequestManager.m */,
+				138AAE7E1BDDE19300A53436 /* AFInstagramManager.h */,
+				138AAE7F1BDDE19300A53436 /* AFInstagramManager.m */,
+				138AAE801BDDE19300A53436 /* NSMutableData+generatePostBody.h */,
+				138AAE811BDDE19300A53436 /* NSMutableData+generatePostBody.m */,
+				138AAE821BDDE19300A53436 /* NSString+SigString.h */,
+				138AAE831BDDE19300A53436 /* NSString+SigString.m */,
+			);
+			path = AFRequest;
+			sourceTree = "<group>";
+		};
+		13A8EEC71BDE255F009C7140 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				13A8EEC81BDE255F009C7140 /* Reachability.h */,
+				13A8EEC91BDE255F009C7140 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		13A8EECB1BDE25C8009C7140 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13A8EEE11BDF2FD7009C7140 /* ModelBase */,
+				13A8EEE61BDF2FD7009C7140 /* ModelTools */,
+				13A8EED21BDE27FC009C7140 /* OrderItem.h */,
+				13A8EED31BDE27FC009C7140 /* OrderItem.m */,
+				13A8EEF51BDF304C009C7140 /* FollowOrderList.h */,
+				13A8EEF61BDF304C009C7140 /* FollowOrderList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		13A8EEE11BDF2FD7009C7140 /* ModelBase */ = {
+			isa = PBXGroup;
+			children = (
+				13A8EEE21BDF2FD7009C7140 /* ModelBase.h */,
+				13A8EEE31BDF2FD7009C7140 /* ModelBase.m */,
+				13A8EEE41BDF2FD7009C7140 /* ModelList.h */,
+				13A8EEE51BDF2FD7009C7140 /* ModelList.m */,
+			);
+			path = ModelBase;
+			sourceTree = "<group>";
+		};
+		13A8EEE61BDF2FD7009C7140 /* ModelTools */ = {
+			isa = PBXGroup;
+			children = (
+				13A8EEE71BDF2FD7009C7140 /* NSArray+Extension.h */,
+				13A8EEE81BDF2FD7009C7140 /* NSArray+Extension.m */,
+				13A8EEE91BDF2FD7009C7140 /* NSObject+Extention.h */,
+				13A8EEEA1BDF2FD7009C7140 /* NSObject+Extention.m */,
+				13A8EEEB1BDF2FD7009C7140 /* UIColor+Extension.h */,
+				13A8EEEC1BDF2FD7009C7140 /* UIColor+Extension.m */,
+				13A8EEED1BDF2FD7009C7140 /* UIColor+HEX.h */,
+				13A8EEEE1BDF2FD7009C7140 /* UIColor+HEX.m */,
+			);
+			path = ModelTools;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		133FA09E1B9D357E00B02EBD /* InstagramAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 133FA0C21B9D357E00B02EBD /* Build configuration list for PBXNativeTarget "InstagramAPI" */;
+			buildPhases = (
+				133FA09B1B9D357E00B02EBD /* Sources */,
+				133FA09C1B9D357E00B02EBD /* Frameworks */,
+				133FA09D1B9D357E00B02EBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InstagramAPI;
+			productName = InstagramAPI;
+			productReference = 133FA09F1B9D357E00B02EBD /* InstagramAPI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		133FA0B71B9D357E00B02EBD /* InstagramAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 133FA0C51B9D357E00B02EBD /* Build configuration list for PBXNativeTarget "InstagramAPITests" */;
+			buildPhases = (
+				133FA0B41B9D357E00B02EBD /* Sources */,
+				133FA0B51B9D357E00B02EBD /* Frameworks */,
+				133FA0B61B9D357E00B02EBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				133FA0BA1B9D357E00B02EBD /* PBXTargetDependency */,
+			);
+			name = InstagramAPITests;
+			productName = InstagramAPITests;
+			productReference = 133FA0B81B9D357E00B02EBD /* InstagramAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		133FA0971B9D357E00B02EBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Blues;
+				TargetAttributes = {
+					133FA09E1B9D357E00B02EBD = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 75B4FTGL3M;
+					};
+					133FA0B71B9D357E00B02EBD = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 75B4FTGL3M;
+						TestTargetID = 133FA09E1B9D357E00B02EBD;
+					};
+				};
+			};
+			buildConfigurationList = 133FA09A1B9D357E00B02EBD /* Build configuration list for PBXProject "InstagramAPI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 133FA0961B9D357E00B02EBD;
+			productRefGroup = 133FA0A01B9D357E00B02EBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				133FA09E1B9D357E00B02EBD /* InstagramAPI */,
+				133FA0B71B9D357E00B02EBD /* InstagramAPITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		133FA09D1B9D357E00B02EBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				130329271BF3474600D97413 /* PresentControllerViewController.xib in Resources */,
+				133FA0AE1B9D357E00B02EBD /* Main.storyboard in Resources */,
+				133FA0B31B9D357E00B02EBD /* LaunchScreen.xib in Resources */,
+				133FA0B01B9D357E00B02EBD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		133FA0B61B9D357E00B02EBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		133FA09B1B9D357E00B02EBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				130329261BF3474600D97413 /* PresentControllerViewController.m in Sources */,
+				13A8EEF71BDF304C009C7140 /* FollowOrderList.m in Sources */,
+				133FA1511B9D63F000B02EBD /* AFHTTPRequestOperation.m in Sources */,
+				133FA1591B9D63F000B02EBD /* AFURLSessionManager.m in Sources */,
+				133FA0DF1B9D35D500B02EBD /* CMethods.m in Sources */,
+				133FA1561B9D63F000B02EBD /* AFURLConnectionOperation.m in Sources */,
+				138AAE851BDDE19300A53436 /* NSMutableData+generatePostBody.m in Sources */,
+				133FA1521B9D63F000B02EBD /* AFHTTPRequestOperationManager.m in Sources */,
+				138AAE861BDDE19300A53436 /* NSString+SigString.m in Sources */,
+				13A8EED41BDE27FC009C7140 /* OrderItem.m in Sources */,
+				133FA1541B9D63F000B02EBD /* AFNetworkReachabilityManager.m in Sources */,
+				136FFB161B9EE44300BA06D2 /* SBJsonStreamWriterState.m in Sources */,
+				136FFB121B9EE44300BA06D2 /* SBJsonStreamParserAdapter.m in Sources */,
+				13A8EEF11BDF2FD7009C7140 /* NSArray+Extension.m in Sources */,
+				133FA0E61B9D35D500B02EBD /* MBProgressHUD.m in Sources */,
+				136FFB141B9EE44300BA06D2 /* SBJsonStreamWriter.m in Sources */,
+				136FFB191B9EE44300BA06D2 /* SBJsonWriter.m in Sources */,
+				133FA1551B9D63F000B02EBD /* AFSecurityPolicy.m in Sources */,
+				13A8EECA1BDE255F009C7140 /* Reachability.m in Sources */,
+				136FFB181B9EE44300BA06D2 /* SBJsonUTF8Stream.m in Sources */,
+				138AAE891BDE02F500A53436 /* RC_RequestManager.m in Sources */,
+				136FFB171B9EE44300BA06D2 /* SBJsonTokeniser.m in Sources */,
+				136FFB0E1B9EE44300BA06D2 /* NSObject+SBJson.m in Sources */,
+				136FFB131B9EE44300BA06D2 /* SBJsonStreamParserState.m in Sources */,
+				138AAE841BDDE19300A53436 /* AFInstagramManager.m in Sources */,
+				136FFB0F1B9EE44300BA06D2 /* SBJsonParser.m in Sources */,
+				13A8EEEF1BDF2FD7009C7140 /* ModelBase.m in Sources */,
+				136FFB111B9EE44300BA06D2 /* SBJsonStreamParserAccumulator.m in Sources */,
+				13A8EEF01BDF2FD7009C7140 /* ModelList.m in Sources */,
+				13A8EEF41BDF2FD7009C7140 /* UIColor+HEX.m in Sources */,
+				136FFB101B9EE44300BA06D2 /* SBJsonStreamParser.m in Sources */,
+				133FA1571B9D63F000B02EBD /* AFURLRequestSerialization.m in Sources */,
+				13A8EEF31BDF2FD7009C7140 /* UIColor+Extension.m in Sources */,
+				133FA1581B9D63F000B02EBD /* AFURLResponseSerialization.m in Sources */,
+				133FA0AB1B9D357E00B02EBD /* ViewController.m in Sources */,
+				133FA0A81B9D357E00B02EBD /* AppDelegate.m in Sources */,
+				133FA1531B9D63F000B02EBD /* AFHTTPSessionManager.m in Sources */,
+				136FFB151B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				13A8EEF21BDF2FD7009C7140 /* NSObject+Extention.m in Sources */,
+				133FA0A51B9D357E00B02EBD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		133FA0B41B9D357E00B02EBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				133FA0BF1B9D357E00B02EBD /* InstagramAPITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		133FA0BA1B9D357E00B02EBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 133FA09E1B9D357E00B02EBD /* InstagramAPI */;
+			targetProxy = 133FA0B91B9D357E00B02EBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		133FA0AC1B9D357E00B02EBD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				133FA0AD1B9D357E00B02EBD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		133FA0B11B9D357E00B02EBD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				133FA0B21B9D357E00B02EBD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		133FA0C01B9D357E00B02EBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		133FA0C11B9D357E00B02EBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		133FA0C31B9D357E00B02EBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/InstagramAPI/PrefixHeader.pch";
+				INFOPLIST_FILE = InstagramAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"-ObjC",
+					"-fobjc-arc",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialtools.iOSGetlike;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+			};
+			name = Debug;
+		};
+		133FA0C41B9D357E00B02EBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/InstagramAPI/PrefixHeader.pch";
+				INFOPLIST_FILE = InstagramAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"-ObjC",
+					"-fobjc-arc",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialtools.iOSGetlike;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+			};
+			name = Release;
+		};
+		133FA0C61B9D357E00B02EBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = InstagramAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstagramAPI.app/InstagramAPI";
+			};
+			name = Debug;
+		};
+		133FA0C71B9D357E00B02EBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Blues bian (H33PT2Q8V6)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = InstagramAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "04f1d599-e634-4f3d-a34d-c0d645b00b19";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstagramAPI.app/InstagramAPI";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		133FA09A1B9D357E00B02EBD /* Build configuration list for PBXProject "InstagramAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				133FA0C01B9D357E00B02EBD /* Debug */,
+				133FA0C11B9D357E00B02EBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		133FA0C21B9D357E00B02EBD /* Build configuration list for PBXNativeTarget "InstagramAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				133FA0C31B9D357E00B02EBD /* Debug */,
+				133FA0C41B9D357E00B02EBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		133FA0C51B9D357E00B02EBD /* Build configuration list for PBXNativeTarget "InstagramAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				133FA0C61B9D357E00B02EBD /* Debug */,
+				133FA0C71B9D357E00B02EBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 133FA0971B9D357E00B02EBD /* Project object */;
+}
