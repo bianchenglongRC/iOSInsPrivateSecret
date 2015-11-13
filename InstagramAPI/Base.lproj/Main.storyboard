@@ -111,6 +111,8 @@
                         <outlet property="insLoginBtn" destination="yxT-S7-3w0" id="goy-Ht-sGX"/>
                         <outlet property="postFollowBtn" destination="ZXO-ww-EKp" id="V3H-c9-tWe"/>
                         <outlet property="postLikeBtn" destination="cYi-LU-qnN" id="L17-EH-c5b"/>
+                        <outlet property="uNameTextfiled" destination="XaI-6A-QYT" id="ogS-Gn-kaU"/>
+                        <outlet property="uPwdTextfiled" destination="DbN-Uz-QAQ" id="x1r-S3-1Qb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
