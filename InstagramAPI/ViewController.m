@@ -36,15 +36,20 @@
 static NSString* kUserAgent = @"Instagram 6.9.1 Android (15/4.0.4; 160dpi; 320x480; Sony; MiniPro; mango; semc; en_Us)";
 
 //static NSString* kStringBoundary = @"B17B7707-F82B-480B-A7E0-B55EEEC71473";
-static const NSTimeInterval kTimeoutInterval = 120.0;
+static const NSTimeInterval kTimeoutInterval = 20.0;
 
 
-@interface ViewController ()<MFMailComposeViewControllerDelegate>
+@interface ViewController ()<MFMailComposeViewControllerDelegate, UITextFieldDelegate>
 {
     BOOL * finished;
     NSString *kStringBoundary;
     NSOperationQueue *queue;
     NSDictionary *headerDic;
+    NSInteger *time;
+    NSNumber *currentOrderId;
+    DataBaseHandler *errorDB;
+    NSInteger number;
+
 }
 @property (nonatomic, copy) void (^successLogin)(NSString *code);
 
@@ -56,11 +61,22 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
 @property (nonatomic, strong)NSURLConnection *connection;
 @property (nonatomic, strong)NSString *requestFlag;
 @property (nonatomic, strong)NSString *device_id;
+@property (nonatomic, strong)NSArray *orderList;
+@property (nonatomic, strong)NSMutableArray *orderNumArr;
+@property (nonatomic, strong)NSMutableDictionary *allOrderDic;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *insLoginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *postLikeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *postFollowBtn;
 @property (weak, nonatomic) IBOutlet UITextField *uNameTextfiled;
 @property (weak, nonatomic) IBOutlet UITextField *uPwdTextfiled;
+
+@property (weak, nonatomic) IBOutlet UIImageView *insImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *errorLable;
+
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *sentMailBtn;
 
@@ -89,11 +105,14 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
+    number = 1;
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:1];
     //    [self getUniqueStrByUUID];
-    self.device_id = [self getUniqueStrByUUID];
+    self.device_id = [NSString getUniqueStrByUUID];
+    self.orderNumArr = [NSMutableArray array];
+    self.allOrderDic = [NSMutableDictionary dictionary];
+    self.orderList = [NSArray array];
     
     //    [self makeApiCallWithMethod:@"///fas" Params:nil Ssl:NO Use_cookie:NO];
     
@@ -104,7 +123,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
     
     
     //head  请求头
-    
+    kStringBoundary = [NSString getUniqueStrByUUID];
     NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
     headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5"};
     
@@ -116,15 +135,85 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
 //    self.ig_agent = [keyArr lastObject];
 //    self.device_id = [userDefault objectForKey:deviceID];
     
+    self.insLoginBtn.enabled = NO;
+    self.uNameTextfiled.delegate = self;
+    self.uPwdTextfiled.delegate = self;
+    [ [NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textChange)name:UITextFieldTextDidChangeNotification object:self.uPwdTextfiled];
+    
+    
+    if ([userDefault objectForKey:ctoken]) {
+        self.csrftoken = [userDefault objectForKey:ctoken];
+        self.userName = [userDefault objectForKey:@"userName"];
+        self.userID = [userDefault objectForKey:@"userID"];
+        [self severLogin];
+    }
+    
     [self getBaseParam];
+    
+    time = 0;
+    
+    [self CreatDataTable];
+
     
     
 }
+
+- (void)CreatDataTable
+{
+    errorDB = [DataBaseHandler shareInstance];
+    [errorDB openDB];
+    [errorDB creatTable];
+    
+}
+
+- (void)CloseDB
+{
+    errorDB = [DataBaseHandler shareInstance];
+    
+    [errorDB closeDB];
+}
+
+
+-(void)textChange
+{
+    self.insLoginBtn.enabled= self.uPwdTextfiled.text.length>0;
+}
+
+
+
+
 
 -(int)getRandomNumber:(int)from to:(int)to
 {
     return (int)(from + (arc4random() % (to - from + 1)));
 }
+
+- (IBAction)showErrorList:(id)sender {
+    
+    PresentControllerViewController *preVC = [[PresentControllerViewController alloc] init];
+    preVC.errorFlag = @"error";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:preVC];
+    
+    
+    [self presentViewController:nav animated:YES completion:^{
+    
+        
+    }];
+    
+}
+- (IBAction)showErrorList1:(id)sender {
+    
+    PresentControllerViewController *preVC = [[PresentControllerViewController alloc] init];
+    preVC.errorFlag = @"success";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:preVC];
+    
+    
+    [self presentViewController:nav animated:YES completion:^{
+        
+        
+    }];
+}
+
 
 
 
@@ -260,7 +349,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
                 [userDefault setObject:@"4|Instagram 6.9.1 Android" forKey:igversion];
             }
             if(![userDefault objectForKey:deviceID]){
-                [userDefault setObject:[self getUniqueStrByUUID] forKey:deviceID];
+                [userDefault setObject:[NSString getUniqueStrByUUID] forKey:deviceID];
             }
             [userDefault synchronize];
         } else {
@@ -278,7 +367,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
             [userDefault setObject:@"25a0afd75ed57c6840f9b15dc61f1126a7ce18124df77d7154e7756aaaa4fce4" forKey:igkey];
             [userDefault setObject:@"4|Instagram 6.9.1 Android" forKey:igversion];
             if(![userDefault objectForKey:deviceID]){
-                [userDefault setObject:[self getUniqueStrByUUID] forKey:deviceID];
+                [userDefault setObject:[NSString getUniqueStrByUUID] forKey:deviceID];
             }
             [userDefault synchronize];
         }
@@ -297,7 +386,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
         [userDefault setObject:@"25a0afd75ed57c6840f9b15dc61f1126a7ce18124df77d7154e7756aaaa4fce4" forKey:igkey];
         [userDefault setObject:@"4|Instagram 6.9.1 Android" forKey:igversion];
         if(![userDefault objectForKey:deviceID]){
-            [userDefault setObject:[self getUniqueStrByUUID] forKey:deviceID];
+            [userDefault setObject:[NSString getUniqueStrByUUID] forKey:deviceID];
         }
         [userDefault synchronize];
     }];
@@ -307,10 +396,148 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
 
 - (void)getPictureFromSever
 {
-    NSDictionary *dic = @{};
+    NSDictionary *dic = @{@"usertoken":self.csrftoken, @"userid" : self.userID, @"appid" : SeverAppID, @"plat" : @1, @"type" : @1};
+    [[RC_RequestManager shareInstance] requestPictureFormSeverWithParm:dic success:^(id responseObject) {
+        
+        OrderList *list = [[OrderList alloc] initWithArray:[responseObject objectForKey:@"list"]];
+        if (list.count == 0) {
+            [self performSelector:@selector(getPictureFromSever) withObject:nil afterDelay:20.0f];
+            return;
+        }
+        self.orderList = list.array;
+        for (int i = 0; i<list.array.count; i++) {
+            OrderItem *orderModel = list.array[i];
+            [self.orderNumArr addObject:orderModel.orderid];
+            [self.allOrderDic setObject:orderModel forKey:orderModel.orderid];
+            //                [self.picUrlArr addObject:orderModel.picurl];
+            //                ruid = orderModel.userid;
+            //                rmediaid = orderModel.picid;
+            //                [self imageCacheLoadingLoading:YES];
+        }
+        
+        if (time == 0) {
+            OrderItem *orderModel = self.orderList[0];
+            currentOrderId = orderModel.orderid;
+
+            
+            [self.insImage sd_setImageWithURL:[NSURL URLWithString: orderModel.picurl] placeholderImage:[UIImage imageNamed:@"nonephoto"] options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+            }];
+            time = 1;
+        }
+
+        
+        
+        
+    } andFailed:^(NSError *error) {
+        
+    }];
+    
     
 }
 
+- (IBAction)LikeBtnClicked:(id)sender {
+    
+    if (!currentOrderId) {
+        return;
+    }
+    OrderItem *orderModel = [self.allOrderDic objectForKey:currentOrderId];
+    if (!orderModel) {
+        [self picturePageUp];
+        return;
+    }
+    
+    
+
+    
+    NSDictionary *params = @{@"photo_id":orderModel.picid,@"_uuid":@"c952328b-3417-4db6-89d0-094a397d029",@"_uid":self.userID,@"_csrftoken":self.csrftoken};
+    
+    NSString *sign_body = [self makeApiCallWithMethod:@"Like" Params:params Ssl:NO Use_cookie:self.csrftoken];
+    NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
+//    NSString *device_info = @"(15/4.0.4; 160dpi; 320x480; Sony; MiniPro; mango; semc; en_Us)";
+//    kUserAgent = [NSString stringWithFormat:@"%@%@", self.ig_agent,device_info];
+    kStringBoundary = [NSString getUniqueStrByUUID];
+    
+    NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
+    headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5"};
+    NSMutableData *bodyData = [NSMutableData generatePostBodyWithRequestBody:requestBody Boundary:kStringBoundary];
+    
+    //    [self connectWithRequestBody:requestBody HttpMethod:@"POST" OrderModel:orderModel];
+    
+    
+    NSString *likeUrl = [NSString stringWithFormat:@"https://i.instagram.com/api/v1/media/%@/like/?d=0&src=timeline",orderModel.picid];
+    
+    [[AFInstagramManager shareManager] likeRequestWithUrl:likeUrl header:headerDic body:bodyData timeoutInterVal:20.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *errorStr = [[NSString alloc] init];
+        if (operation.responseObject == nil) {
+            errorStr = [NSString stringWithFormat:@"%@", responseObject];
+        } else {
+            errorStr = [NSString stringWithFormat:@"1->%@ 2->%@", operation.responseObject, responseObject];
+        }
+        self.errorLable.text = errorStr;
+        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"success"];
+        if ([[responseObject objectForKey:@"status"] isEqual:@"ok"]) {
+        
+        }
+        
+        number ++;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"发生错误！%@",operation.responseObject);
+        NSLog(@"%@", orderModel.picid);
+        NSString *errorStr = [[NSString alloc] init];
+        if (operation.responseObject == nil) {
+            errorStr = [NSString stringWithFormat:@"%@", error];
+        } else {
+            errorStr = [NSString stringWithFormat:@"%@", operation.responseObject];
+        }
+        self.errorLable.text = errorStr;
+        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"error"];
+        
+        number++;
+    }];
+    
+   
+    [self picturePageUp];
+    
+}
+
+
+- (void)picturePageUp
+{
+    //
+    //    showActiveIndicatorInView(YES, picImageView);
+    
+    if (currentOrderId) {
+        [self.orderNumArr removeObject:currentOrderId];
+        [self.allOrderDic removeObjectForKey:currentOrderId];
+        //        [self.picUrlArr removeObjectAtIndex:0];
+    }
+    
+    if (self.orderNumArr.count == 0) {
+        [self.insImage setImage:[UIImage imageNamed:@"nonephoto"]];
+    }
+    
+    if (self.orderNumArr.count > 0) {
+        currentOrderId = self.orderNumArr[0];
+        OrderItem *orderModel = [self.allOrderDic objectForKey:currentOrderId];
+        //        ruid = orderModel.userid;
+        //        rmediaid = orderModel.picid;
+        
+        [self.insImage sd_setImageWithURL:[NSURL URLWithString:orderModel.picurl] placeholderImage:[UIImage imageNamed:@"nonephoto"] options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            //            showActiveIndicatorInView(NO, picImageView);
+            
+            
+        }];
+        
+    }
+    if (self.orderNumArr.count <= 2) {
+        [self getPictureFromSever];
+        
+    }
+    
+}
 
 
 - (IBAction)InsLogin:(id)sender {
@@ -318,6 +545,8 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
       NSLog(@"%lu", (unsigned long)self.followArr.count);
     NSString *userName = self.uNameTextfiled.text;
     NSString *password = self.uPwdTextfiled.text;
+
+    [self.uPwdTextfiled resignFirstResponder];
     
     if ([userName isEqualToString:@""] || [password isEqualToString:@""]) {
         return;
@@ -325,7 +554,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
     
     [self deleteCookieWithKey];
     [self.postLikeBtn setEnabled:NO];
-    NSDictionary *params = @{@"username":self.uNameTextfiled.text,@"from_reg":@"false",@"password":self.uPwdTextfiled};
+    NSDictionary *params = @{@"username":userName,@"from_reg":@"false",@"password":password};
     NSString *sign_body = [self makeApiCallWithMethod:@"Login" Params:params Ssl:NO Use_cookie:nil];
     NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
     NSMutableData *bodyData = [NSMutableData generatePostBodyWithRequestBody:requestBody Boundary:kStringBoundary];
@@ -335,6 +564,11 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
         self.userID = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"pk"];
         self.userName = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"username"];
         self.userUrl = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"profile_pic_url"];
+        
+        [userDefault setObject:self.userID forKey:@"userID"];
+        [userDefault setObject:self.userName forKey:@"userName"];
+        
+        
         if (self.userID != nil) {
             [self severLogin];
         }
@@ -345,6 +579,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
         self.csrftoken = [cookieDic objectForKey:@"csrftoken"];
         [userDefault setObject:self.csrftoken forKey:ctoken];
         [self.postLikeBtn setEnabled:YES];
+        [userDefault synchronize];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -358,6 +593,9 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
 {
     [[RC_RequestManager shareInstance] registeUseInfo:[self getRegisteUseInfoDic] success:^(id responseObject) {
         NSLog(@"%@", responseObject);
+        
+        [self getPictureFromSever];
+        
     } andFailed:^(NSError *error) {
         
     }];
@@ -365,7 +603,7 @@ static const NSTimeInterval kTimeoutInterval = 120.0;
 
 -(NSDictionary *)getRegisteUseInfoDic    //appid userid usertoken picurl  password countryid deviceid pushtoken
 {
-    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:ACCESSTOKEN_KEY];
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:ctoken];
     NSString *userToken = @"";
     if (token) {
         userToken = token;
@@ -611,7 +849,7 @@ static int total1 = 0;
 - (void)connect {
     
     
-    kStringBoundary = [self getUniqueStrByUUID];
+    kStringBoundary = [NSString getUniqueStrByUUID];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.url]
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                                        timeoutInterval:kTimeoutInterval];

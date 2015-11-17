@@ -10,4 +10,6 @@
 
 @interface PresentControllerViewController : UIViewController
 
+@property (nonatomic, copy)NSString *errorFlag;
+
 @end

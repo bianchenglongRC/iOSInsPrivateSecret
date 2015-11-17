@@ -11,7 +11,7 @@
 #import "Reachability.h"
 
 ///打印日志，发布时关闭,
-#define TestServer 1
+//#define TestServer 1
 
 #define InstagramGetAccess_tokenURL  @"https://api.instagram.com/oauth/access_token?scope=likes+relationships"
 #define InstagramRootURL             @"https://api.instagram.com/v1/users/media/recent?count=500"

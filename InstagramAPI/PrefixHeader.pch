@@ -17,6 +17,9 @@
 #import <UIKit/UIKit.h>
 #import "RC_RequestManager.h"
 #import "Public.h"
+#import "UIImageView+WebCache.h"
+#import "DataBaseHandler.h"
+#import "DetailViewController.h"
 
 #endif
 
