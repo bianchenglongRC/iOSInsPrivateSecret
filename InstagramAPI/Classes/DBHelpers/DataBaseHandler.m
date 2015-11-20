@@ -97,7 +97,7 @@
     //参数1:数据库指针
     //参数2:sql语句
     
-    NSString *sql = [NSString stringWithFormat:@"create table error (errorid text, errorstr text, flag text, number int)"];
+    NSString *sql = [NSString stringWithFormat:@"create table error (errorid text, errorstr text, flag text, number text, time text)"];
     int result = sqlite3_exec(dbPoint, [sql UTF8String], NULL, NULL, NULL);
     
     NSLog(@"创建数据库============%d===============", result);
@@ -118,9 +118,9 @@
 }
 
 
-- (void)insertErrorID:(NSString *)errorid errorStr:(NSString *)errorstr errorFlag:(NSString *)flag Number:(int)number
+- (void)insertErrorID:(NSString *)errorid errorStr:(NSString *)errorstr errorFlag:(NSString *)flag Number:(NSString *)number CurrentTime:(NSString *)time
 {
-    NSString *sql = [NSString stringWithFormat:@"insert into error values ('%@', '%@', '%@' ,'%d')", errorid, errorstr, flag, number];
+    NSString *sql = [NSString stringWithFormat:@"insert into error values ('%@', '%@', '%@' ,'%@', '%@')", errorid, errorstr, flag, number, time];
     int result = sqlite3_exec(dbPoint, [sql UTF8String], NULL, NULL, NULL);
     NSLog(@"插入数据库 是否成功:%d=========++++++++++", result);
 }
@@ -163,6 +163,14 @@
 }
  */
 
+
+- (void)deleteErrorWithFlag:(NSString *)flagt
+{
+    NSString *sql = [NSString stringWithFormat:@"delete from error where flag = %@", flagt];
+    int flag = sqlite3_exec(dbPoint, [sql UTF8String], NULL, NULL, NULL);
+    NSLog(@"删除数据库++++%d", flag);
+
+}
 
 - (void)deleteErrorWithID:(NSString *)errorid
 {
@@ -427,13 +435,13 @@
             const unsigned char* errorstrStr = sqlite3_column_text(stmt, 1);
             NSString *errorstr = [NSString stringWithUTF8String:(const char*)errorstrStr];
             
-            const unsigned char* numberStr = sqlite3_column_text(stmt, 2);
+            const unsigned char* numberStr = sqlite3_column_text(stmt, 3);
             NSString *number = [NSString stringWithUTF8String:(const char*)numberStr];
 //            const unsigned char* snameStr = sqlite3_column_text(stmt, 2);
 //            NSString *sname = [NSString stringWithUTF8String:(const char*)snameStr];
 //            
-//            const unsigned char* simgUrlStr = sqlite3_column_text(stmt, 3);
-//            NSString *simgUrl = [NSString stringWithUTF8String:(const char*)simgUrlStr];
+            const unsigned char* timeStr = sqlite3_column_text(stmt, 4);
+            NSString *time = [NSString stringWithUTF8String:(const char*)timeStr];
             
             
             
@@ -444,6 +452,7 @@
             label.errorid = errorid;
             label.errorstr = errorstr;
             label.number = number;
+            label.time = time;
 //            label.name = sname;
 //            label.imgUrl = simgUrl;
             

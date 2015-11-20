@@ -24,7 +24,7 @@
     
     
 //    self.errorIDLab.text = self.errorModel.errorid;
-    self.errorStrLab.text = self.errorModel.errorstr;
+    self.errorStrLab.text = [NSString stringWithFormat:@"Times:%@ ClickTime:%@ Error:%@", self.errorModel.number, self.errorModel.time, self.errorModel.errorstr];
     
     
     

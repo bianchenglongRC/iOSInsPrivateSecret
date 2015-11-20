@@ -28,7 +28,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIBarButtonItem *leftButton = [[ UIBarButtonItem alloc ] initWithBarButtonSystemItem : UIBarButtonSystemItemCancel target : self action : @selector (backBtnClicked:)];
+    UIBarButtonItem *leftButton = [[ UIBarButtonItem alloc ] initWithBarButtonSystemItem : UIBarButtonSystemItemCancel target : self action:@selector (backBtnClicked:)];
+    
+//     UIBarButtonItem *rightButton = [[ UIBarButtonItem alloc ] initWithBarButtonSystemItem : UIBarButtonSystemItemCancel target : self action:@selector (doneBtnClicked)];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStylePlain target:self action:@selector(doneBtnClicked)];
+    
+    
+    self.navigationItem.rightBarButtonItem = rightButton;
+
+    
     self.navigationItem.title = @"ERROR LIST";
     
     self.navigationItem.leftBarButtonItem = leftButton;
@@ -45,6 +54,21 @@
     btn.backgroundColor = [UIColor redColor];
     [btn addTarget:self action:@selector(sentMail) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)doneBtnClicked
+{
+    DataBaseHandler *errorDB = [DataBaseHandler shareInstance];
+    
+    [errorDB openDB];
+    
+    [errorDB deleteTable];
+    
+    errorArr = [errorDB selectAllErrorWithFlag:self.errorFlag];
+    
+    [errorTab reloadData];
+
+}
+
 
 - (IBAction)backBtnClicked:(id)sender {
     
@@ -63,9 +87,7 @@
     
     errorArr = [errorDB selectAllErrorWithFlag:self.errorFlag];
     
-    
-    
-    
+    [errorTab reloadData];
 
 }
 
@@ -114,7 +136,7 @@
     
     ErrorItem *errorModel = [errorArr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = errorModel.errorid;
+    cell.textLabel.text = [NSString stringWithFormat:@"TIMES:%@ ClickTime:%@ PICID:%@",errorModel.number , errorModel.time,errorModel.errorid];
     cell.textLabel.font = [UIFont systemFontOfSize:12];
     cell.detailTextLabel.text = errorModel.errorstr;
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];

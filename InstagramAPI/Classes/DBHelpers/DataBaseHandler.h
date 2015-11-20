@@ -40,15 +40,14 @@
 - (void)deleteTable;
 
 //添加数据
-- (void)insertErrorID:(NSString *)errorid errorStr:(NSString *)errorstr errorFlag:(NSString *)flag;
-
+- (void)insertErrorID:(NSString *)errorid errorStr:(NSString *)errorstr errorFlag:(NSString *)flag Number:(NSString *)number CurrentTime:(NSString *)time;
 //- (void)insertLocationLabel:(LocationModel *)label UserId:(NSString *)userId;
 
 //- (void)insertLabelType:(NSString *)type Name:(NSString *)name ImageUrl:(NSString *)imgUrl UserId:(NSString *)userId;
 
 
 
-- (void)deleteErrorWithID:(NSString *)errorid;
+- (void)deleteErrorWithFlag:(NSString *)flagt;
 
 
 //查询

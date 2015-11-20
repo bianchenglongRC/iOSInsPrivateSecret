@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong)NSString *errorid;
 @property (nonatomic, strong)NSString *errorstr;
-@property (nonatomic, assign)int number;
+@property (nonatomic, strong)NSString *number;
+@property (nonatomic, strong)NSString *time;
 
 @end

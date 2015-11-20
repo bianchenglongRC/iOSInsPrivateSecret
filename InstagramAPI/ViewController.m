@@ -49,7 +49,7 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     NSNumber *currentOrderId;
     DataBaseHandler *errorDB;
     NSInteger number;
-
+    NSString *startTime;
 }
 @property (nonatomic, copy) void (^successLogin)(NSString *code);
 
@@ -98,6 +98,12 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self CreatDataTable];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -152,7 +158,6 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
     time = 0;
     
-    [self CreatDataTable];
 
     
     
@@ -436,7 +441,29 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
 }
 
+//记录点击时间
+- (NSString *)getCurrentTime{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    startTime = dateTime;
+    return  startTime;
+}
+
+- (void)likeBtnEnble
+{
+    self.likeBtn.enabled = YES;
+}
+
 - (IBAction)LikeBtnClicked:(id)sender {
+    
+    self.likeBtn.enabled = NO;
+    
+    [self performSelector:@selector(likeBtnEnble) withObject:nil afterDelay:0.3];
+
+    [self getCurrentTime];
+    
+    
     
     if (!currentOrderId) {
         return;
@@ -475,8 +502,8 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
         } else {
             errorStr = [NSString stringWithFormat:@"1->%@ 2->%@", operation.responseObject, responseObject];
         }
-        self.errorLable.text = errorStr;
-        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"success"];
+        self.errorLable.text = [NSString stringWithFormat:@"%ld ->%@", (long)number,errorStr];
+        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"success" Number:[NSString stringWithFormat:@"%ld", (long)number] CurrentTime:startTime];
         if ([[responseObject objectForKey:@"status"] isEqual:@"ok"]) {
         
         }
@@ -491,8 +518,8 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
         } else {
             errorStr = [NSString stringWithFormat:@"%@", operation.responseObject];
         }
-        self.errorLable.text = errorStr;
-        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"error"];
+        self.errorLable.text = [NSString stringWithFormat:@"%ld ->%@", (long)number,errorStr];
+        [errorDB insertErrorID:orderModel.picid errorStr:errorStr errorFlag:@"error" Number:[NSString stringWithFormat:@"%ld", (long)number] CurrentTime:startTime];
         
         number++;
     }];
@@ -553,6 +580,9 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     }
     
     [self deleteCookieWithKey];
+    [userDefault removeObjectForKey:@"userID"];
+    [userDefault removeObjectForKey:@"userName"];
+    [userDefault removeObjectForKey:ctoken];
     [self.postLikeBtn setEnabled:NO];
     NSDictionary *params = @{@"username":userName,@"from_reg":@"false",@"password":password};
     NSString *sign_body = [self makeApiCallWithMethod:@"Login" Params:params Ssl:NO Use_cookie:nil];

@@ -21,12 +21,15 @@ static id _instance;
 + (AFInstagramManager *)shareManager;
 
 {
+    
     static AFInstagramManager *__singletion;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __singletion = [[self alloc] init];
         
     });
+    
+    
     return __singletion;
     
 }
@@ -483,6 +486,7 @@ static id _instance;
         request.HTTPBody = body;
         
     }
+    
     
     
     
