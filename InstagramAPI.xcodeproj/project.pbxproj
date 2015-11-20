@@ -208,6 +208,7 @@
 		137AE04B1BFAC9EC00923DD9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		137AE04C1BFAC9EC00923DD9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		137AE04D1BFAC9EC00923DD9 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		137AE0F01BFF1D9300923DD9 /* 5S版本getlike更新资料包.rar */ = {isa = PBXFileReference; lastKnownFileType = file; path = "5S版本getlike更新资料包.rar"; sourceTree = "<group>"; };
 		138AAE7E1BDDE19300A53436 /* AFInstagramManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFInstagramManager.h; sourceTree = "<group>"; };
 		138AAE7F1BDDE19300A53436 /* AFInstagramManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFInstagramManager.m; sourceTree = "<group>"; };
 		138AAE801BDDE19300A53436 /* NSMutableData+generatePostBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+generatePostBody.h"; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 		133FA0961B9D357E00B02EBD = {
 			isa = PBXGroup;
 			children = (
+				137AE0F01BFF1D9300923DD9 /* 5S版本getlike更新资料包.rar */,
 				133FA0A11B9D357E00B02EBD /* InstagramAPI */,
 				133FA0BB1B9D357E00B02EBD /* InstagramAPITests */,
 				133FA0A01B9D357E00B02EBD /* Products */,
