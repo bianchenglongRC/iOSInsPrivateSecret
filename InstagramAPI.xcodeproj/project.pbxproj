@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		130329261BF3474600D97413 /* PresentControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130329241BF3474600D97413 /* PresentControllerViewController.m */; };
 		130329271BF3474600D97413 /* PresentControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130329251BF3474600D97413 /* PresentControllerViewController.xib */; };
+		131331591C91645D0022D374 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131331581C91645D0022D374 /* MediaPlayer.framework */; };
 		133FA0A51B9D357E00B02EBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A41B9D357E00B02EBD /* main.m */; };
 		133FA0A81B9D357E00B02EBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A71B9D357E00B02EBD /* AppDelegate.m */; };
 		133FA0AB1B9D357E00B02EBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0AA1B9D357E00B02EBD /* ViewController.m */; };
@@ -97,6 +98,7 @@
 		130329231BF3474600D97413 /* PresentControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentControllerViewController.h; sourceTree = "<group>"; };
 		130329241BF3474600D97413 /* PresentControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentControllerViewController.m; sourceTree = "<group>"; };
 		130329251BF3474600D97413 /* PresentControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentControllerViewController.xib; sourceTree = "<group>"; };
+		131331581C91645D0022D374 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		133FA09F1B9D357E00B02EBD /* InstagramAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		133FA0A31B9D357E00B02EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		133FA0A41B9D357E00B02EBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				131331591C91645D0022D374 /* MediaPlayer.framework in Frameworks */,
 				137AE04A1BFA1B2100923DD9 /* libsqlite3.0.tbd in Frameworks */,
 				138B5E711BCCEA10002874FB /* MessageUI.framework in Frameworks */,
 				133FA11A1B9D61D000B02EBD /* CoreGraphics.framework in Frameworks */,
@@ -269,6 +272,7 @@
 		133FA0961B9D357E00B02EBD = {
 			isa = PBXGroup;
 			children = (
+				131331581C91645D0022D374 /* MediaPlayer.framework */,
 				137AE0F01BFF1D9300923DD9 /* 5S版本getlike更新资料包.rar */,
 				133FA0A11B9D357E00B02EBD /* InstagramAPI */,
 				133FA0BB1B9D357E00B02EBD /* InstagramAPITests */,

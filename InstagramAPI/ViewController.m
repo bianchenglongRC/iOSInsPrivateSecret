@@ -21,18 +21,21 @@
 #import "OrderItem.h"
 #import "FollowOrderList.h"
 #import "PresentControllerViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
 
 #define InsKey @"6618606de1acf0d804b47831d5074f3f302478330565df90aac37264dc632147"
 #define InsKey1 @"b4a23f5e39b5929e0666ac5de94c89d1618a2916"
 #define InsKey2 @"25a0afd75ed57c6840f9b15dc61f1126a7ce18124df77d7154e7756aaaa4fce4"
+#define InsKey3 @"6d51fe001d37fae892bfd51b334cf2deaa66dc8822ff37e8d0f45e8883d56061"
+#define Inskey4 @"77473a7fa1a8ad3c356d025a07bfa9d18259578ddc3bc9e58d463b1f898e9f39"
 
 #define userDefault     [NSUserDefaults standardUserDefaults]
 
 
 
-//static NSString* kUserAgent = @"Instagram 6.12.0 (iPhone6,2; iPhone OS 8_3; en_GB; en) AppleWebKit/420+";
+//static NSString* kUserAgent = @"Instagram 6.9.0 (iPhone6,2; iPhone OS 8_3; en_GB; en) AppleWebKit/420+";
 static NSString* kUserAgent = @"Instagram 6.9.1 Android (15/4.0.4; 160dpi; 320x480; Sony; MiniPro; mango; semc; en_Us)";
 
 //static NSString* kStringBoundary = @"B17B7707-F82B-480B-A7E0-B55EEEC71473";
@@ -130,8 +133,9 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
     //head  请求头
     kStringBoundary = [NSString getUniqueStrByUUID];
+    
     NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
-    headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5"};
+    headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5" ,@"X-IG-Capabilities": @"Fw=="};
     
     
 //    self.ig_key = [userDefault objectForKey:igkey];
@@ -399,6 +403,10 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 }
 
 
+
+
+
+
 - (void)getPictureFromSever
 {
     NSDictionary *dic = @{@"usertoken":self.csrftoken, @"userid" : self.userID, @"appid" : SeverAppID, @"plat" : @1, @"type" : @1};
@@ -437,8 +445,6 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     } andFailed:^(NSError *error) {
         
     }];
-    
-    
 }
 
 //记录点击时间
@@ -456,6 +462,9 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 }
 
 - (IBAction)LikeBtnClicked:(id)sender {
+    
+//    [self getMediaInfo];
+    [self downloadTouched:nil];
     
     self.likeBtn.enabled = NO;
     
@@ -526,6 +535,27 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
    
     [self picturePageUp];
+    
+}
+
+
+- (void)getMediaInfo
+{
+    NSString *uuid = [NSString getUniqueStrByUUID];
+    NSString *mediaUrl = [NSString stringWithFormat:@"https://i.instagram.com/api/v1/media/1201294890407817194_2009939090/info/?rank_token=%@_%@&ranked_content=true&",self.userID,uuid];
+    kStringBoundary = [NSString getUniqueStrByUUID];
+    
+    NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
+    headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5", @"X-IG-Capabilities" : @"AQ=="};
+    
+    [[AFInstagramManager shareManager] likeRequestWithUrl:mediaUrl header:headerDic body:nil timeoutInterVal:20.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+
+    
     
 }
 
@@ -704,7 +734,7 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 
 - (IBAction)postLike:(id)sender {   ///Like
     
-    
+  /*
     NSInteger likeAutoSwitch = [[userDefault objectForKey:autoLikeSwitch] integerValue];
     NSInteger likeAutoCount = [[userDefault objectForKey:autoLikeSpeed] integerValue];
     [self getAutoLikeList:10];
@@ -715,6 +745,16 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
             [self getAutoLikeList:likeAutoCount];
         }
     });
+   */
+    
+    
+    [[AFInstagramManager shareManager] requestDataWithFrontURL:@"http://i.instagram.com/api/v1/users/search?query=blues_bian" method:@"GET" parameter:nil header:nil body:nil timeoutInterval:10.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    
 }
 
 //获取图片列表, 自动消耗
@@ -1096,6 +1136,147 @@ static int total1 = 0;
 }
 
 
+
+/*  @author Jakey
+*
+*  @brief  下载文件
+*
+*  @param paramDic   附加post参数
+*  @param requestURL 请求地址
+*  @param savedPath  保存 在磁盘的位置
+*  @param success    下载成功回调
+*  @param failure    下载失败回调
+*  @param progress   实时下载进度回调
+*/
+- (void)downloadFileWithOption:(NSDictionary *)paramDic
+                 withInferface:(NSString*)requestURL
+                     savedPath:(NSString*)savedPath
+                        header:(NSDictionary *)header
+               downloadSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+               downloadFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                      progress:(void (^)(float progress))progress
+
+{
+    
+    //沙盒路径    //NSString *savedPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/xxx.zip"];
+    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+    NSMutableURLRequest *request =[serializer requestWithMethod:@"GET" URLString:requestURL parameters:paramDic error:nil];
+    
+    NSDictionary *headerDDIC = @{@"User-Agent":kUserAgent, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5" ,@"X-IG-Capabilities": @"Fw==", @"Range" : @"bytes=0-", @"Accept" : @"*/*", @"Accept-Encoding":@"gzip, deflate", @"Connection" : @"keep-alive"};
+    
+    if (header) {
+        
+        for (NSString *key in [headerDDIC allKeys]) {
+            
+            [request setValue:[headerDDIC objectForKey:key] forHTTPHeaderField:key];
+            
+        }
+        
+    }
+    
+    //以下是手动创建request方法 AFQueryStringFromParametersWithEncoding有时候会保存
+    //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
+    //   NSMutableURLRequest *request =[[[AFHTTPRequestOperationManager manager]requestSerializer]requestWithMethod:@"POST" URLString:requestURL parameters:paramaterDic error:nil];
+    //
+    //    NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    //
+    //    [request setValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
+    //    [request setHTTPMethod:@"POST"];
+    //
+    //    [request setHTTPBody:[AFQueryStringFromParametersWithEncoding(paramaterDic, NSASCIIStringEncoding) dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:savedPath append:NO]];
+    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+        float p = (float)totalBytesRead / totalBytesExpectedToRead;
+        progress(p);
+        NSLog(@"download：%f", (float)totalBytesRead / totalBytesExpectedToRead);
+        
+    }];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation,responseObject);
+        NSLog(@"下载成功");
+        
+        [self openmovie];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(operation,error);
+        
+        NSLog(@"下载失败");
+        
+    }];
+    
+    [operation start];
+    
+}
+
+
+//使用
+- (void)downloadTouched:(id)sender {
+    NSString *savedPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/10586205_1566600096989951_1827874209_n.mp4"];
+    //    NSDictionary *paramaterDic= @{@"jsonString":[@{@"userid":@"2332"} JSONString]?:@""};
+    [self downloadFileWithOption:nil
+                   withInferface:@"http://scontent.cdninstagram.com/t50.2886-16/10586205_1566600096989951_1827874209_n.mp4"
+                       savedPath:savedPath
+                          header:headerDic
+                 downloadSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     
+                 } downloadFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     
+                 } progress:^(float progress) {
+                     
+                 }];
+}
+
+
+-(void)openmovie
+
+{
+    
+    MPMoviePlayerViewController *movie = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:@"http://scontent.cdninstagram.com/t50.2886-16/10586205_1566600096989951_1827874209_n.mp4"]];
+    
+    [movie.moviePlayer prepareToPlay];
+    
+    [self presentMoviePlayerViewControllerAnimated:movie];
+    
+    [movie.moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
+    
+    
+    
+    [movie.view setBackgroundColor:[UIColor clearColor]];
+        
+    [movie.view setFrame:self.view.bounds];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+     
+     
+     
+                                           selector:@selector(movieFinishedCallback:)
+     
+     
+     
+                                               name:MPMoviePlayerPlaybackDidFinishNotification
+     
+     
+     
+                                             object:movie.moviePlayer];
+    
+    
+    
+}
+
+-(void)movieFinishedCallback:(NSNotification*)notify{
+
+    // 视频播放完或者在presentMoviePlayerViewControllerAnimated下的Done按钮被点击响应的通知。
+    
+    MPMoviePlayerController* theMovie = [notify object];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:theMovie];
+    
+    [self dismissMoviePlayerViewControllerAnimated];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
