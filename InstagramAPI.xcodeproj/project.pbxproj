@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		130329261BF3474600D97413 /* PresentControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130329241BF3474600D97413 /* PresentControllerViewController.m */; };
 		130329271BF3474600D97413 /* PresentControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130329251BF3474600D97413 /* PresentControllerViewController.xib */; };
+		1306289C1CC49A54000E18DA /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1306289B1CC49A54000E18DA /* Utility.m */; };
+		1306289F1CC49BFE000E18DA /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1306289E1CC49BFE000E18DA /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		130628A81CC73320000E18DA /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 130628A71CC73320000E18DA /* PopoverView.m */; };
+		130628AF1CC78437000E18DA /* pop_up_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 130628AE1CC78437000E18DA /* pop_up_bg@2x.png */; };
+		130628B61CC78785000E18DA /* ChangeUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130628B51CC78785000E18DA /* ChangeUserCell.m */; };
 		131331591C91645D0022D374 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131331581C91645D0022D374 /* MediaPlayer.framework */; };
 		133FA0A51B9D357E00B02EBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A41B9D357E00B02EBD /* main.m */; };
 		133FA0A81B9D357E00B02EBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FA0A71B9D357E00B02EBD /* AppDelegate.m */; };
@@ -98,6 +103,16 @@
 		130329231BF3474600D97413 /* PresentControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentControllerViewController.h; sourceTree = "<group>"; };
 		130329241BF3474600D97413 /* PresentControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentControllerViewController.m; sourceTree = "<group>"; };
 		130329251BF3474600D97413 /* PresentControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentControllerViewController.xib; sourceTree = "<group>"; };
+		1306289A1CC49A54000E18DA /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		1306289B1CC49A54000E18DA /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		1306289D1CC49BFE000E18DA /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		1306289E1CC49BFE000E18DA /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		130628A01CC49C5A000E18DA /* GTMDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		130628A61CC73320000E18DA /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		130628A71CC73320000E18DA /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		130628AE1CC78437000E18DA /* pop_up_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pop_up_bg@2x.png"; sourceTree = "<group>"; };
+		130628B41CC78785000E18DA /* ChangeUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeUserCell.h; sourceTree = "<group>"; };
+		130628B51CC78785000E18DA /* ChangeUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeUserCell.m; sourceTree = "<group>"; };
 		131331581C91645D0022D374 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		133FA09F1B9D357E00B02EBD /* InstagramAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		133FA0A31B9D357E00B02EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,6 +307,15 @@
 		133FA0A11B9D357E00B02EBD /* InstagramAPI */ = {
 			isa = PBXGroup;
 			children = (
+				1306289A1CC49A54000E18DA /* Utility.h */,
+				1306289B1CC49A54000E18DA /* Utility.m */,
+				1306289D1CC49BFE000E18DA /* GTMBase64.h */,
+				1306289E1CC49BFE000E18DA /* GTMBase64.m */,
+				130628A01CC49C5A000E18DA /* GTMDefines.h */,
+				130628A61CC73320000E18DA /* PopoverView.h */,
+				130628A71CC73320000E18DA /* PopoverView.m */,
+				130628B41CC78785000E18DA /* ChangeUserCell.h */,
+				130628B51CC78785000E18DA /* ChangeUserCell.m */,
 				138AAE7D1BDDE19300A53436 /* AFRequest */,
 				136FFAF41B9EE44300BA06D2 /* Classes */,
 				133FA13D1B9D63F000B02EBD /* AFNetworking */,
@@ -309,6 +333,7 @@
 				137AE04C1BFAC9EC00923DD9 /* DetailViewController.m */,
 				137AE04D1BFAC9EC00923DD9 /* DetailViewController.xib */,
 				133FA0AF1B9D357E00B02EBD /* Images.xcassets */,
+				130628AE1CC78437000E18DA /* pop_up_bg@2x.png */,
 				133FA0B11B9D357E00B02EBD /* LaunchScreen.xib */,
 				133FA0A21B9D357E00B02EBD /* Supporting Files */,
 			);
@@ -650,6 +675,7 @@
 				133FA0AE1B9D357E00B02EBD /* Main.storyboard in Resources */,
 				137AE04F1BFAC9EC00923DD9 /* DetailViewController.xib in Resources */,
 				133FA0B31B9D357E00B02EBD /* LaunchScreen.xib in Resources */,
+				130628AF1CC78437000E18DA /* pop_up_bg@2x.png in Resources */,
 				133FA0B01B9D357E00B02EBD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,6 +704,7 @@
 				133FA1591B9D63F000B02EBD /* AFURLSessionManager.m in Sources */,
 				137AE0331BF98A8500923DD9 /* NSData+ImageContentType.m in Sources */,
 				133FA0DF1B9D35D500B02EBD /* CMethods.m in Sources */,
+				1306289F1CC49BFE000E18DA /* GTMBase64.m in Sources */,
 				137AE0381BF98A8500923DD9 /* SDWebImageDownloaderOperation.m in Sources */,
 				133FA1561B9D63F000B02EBD /* AFURLConnectionOperation.m in Sources */,
 				137AE0361BF98A8500923DD9 /* SDWebImageDecoder.m in Sources */,
@@ -695,6 +722,7 @@
 				13A8EEF11BDF2FD7009C7140 /* NSArray+Extension.m in Sources */,
 				133FA0E61B9D35D500B02EBD /* MBProgressHUD.m in Sources */,
 				136FFB141B9EE44300BA06D2 /* SBJsonStreamWriter.m in Sources */,
+				130628B61CC78785000E18DA /* ChangeUserCell.m in Sources */,
 				136FFB191B9EE44300BA06D2 /* SBJsonWriter.m in Sources */,
 				133FA1551B9D63F000B02EBD /* AFSecurityPolicy.m in Sources */,
 				13A8EECA1BDE255F009C7140 /* Reachability.m in Sources */,
@@ -720,6 +748,8 @@
 				133FA0AB1B9D357E00B02EBD /* ViewController.m in Sources */,
 				133FA0A81B9D357E00B02EBD /* AppDelegate.m in Sources */,
 				137AE03A1BF98A8500923DD9 /* SDWebImagePrefetcher.m in Sources */,
+				1306289C1CC49A54000E18DA /* Utility.m in Sources */,
+				130628A81CC73320000E18DA /* PopoverView.m in Sources */,
 				133FA1531B9D63F000B02EBD /* AFHTTPSessionManager.m in Sources */,
 				137AE0451BFA12E000923DD9 /* DataBaseHandler.m in Sources */,
 				136FFB151B9EE44300BA06D2 /* SBJsonStreamWriterAccumulator.m in Sources */,

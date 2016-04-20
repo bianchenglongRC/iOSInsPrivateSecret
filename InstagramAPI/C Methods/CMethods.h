@@ -41,4 +41,8 @@ void hideMBProgressHUD();
 
 NSString *getCategoryName(int index);
 
+CGFloat getLength(CGFloat length);
+
+CGRect getFrameWithRect(CGFloat x,CGFloat y,CGFloat width,CGFloat height);
+
 @end

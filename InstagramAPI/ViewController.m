@@ -22,20 +22,25 @@
 #import "FollowOrderList.h"
 #import "PresentControllerViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "Utility.h"
+#import "PopoverView.h"
+#import "UIButton+WebCache.h"
 
 #define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
 
 #define InsKey @"6618606de1acf0d804b47831d5074f3f302478330565df90aac37264dc632147"
-#define InsKey1 @"b4a23f5e39b5929e0666ac5de94c89d1618a2916"
+#define InsKey1 @"39b5929e0666ac5de94c89d1618a2916"
 #define InsKey2 @"25a0afd75ed57c6840f9b15dc61f1126a7ce18124df77d7154e7756aaaa4fce4"
 #define InsKey3 @"6d51fe001d37fae892bfd51b334cf2deaa66dc8822ff37e8d0f45e8883d56061"
 #define Inskey4 @"77473a7fa1a8ad3c356d025a07bfa9d18259578ddc3bc9e58d463b1f898e9f39"
-
+#define Inskey5 @"8b46309eb680f272cc770d214b7dbe5f0c5d26b6cb82b0b740257360b43618f0"
+//25eace5393646842f0d0c3fb2ac7d3cfa15c052436ee86b5406a8433f54d24a5
+#define Inskey6 @"4d0c1bbd6846e97622631d869d293f53baeb7b75afe27a2d31fa5794ae2e705a"
 #define userDefault     [NSUserDefaults standardUserDefaults]
 
 
 
-//static NSString* kUserAgent = @"Instagram 6.9.0 (iPhone6,2; iPhone OS 8_3; en_GB; en) AppleWebKit/420+";
+//static NSString* kUserAgent = @"Instagram 7.18.0 (iPhone8,1; iPhone OS 9_2_1; en_US; en-US;scale=2.34; 750x1331) AppleWebKit/420+";
 static NSString* kUserAgent = @"Instagram 6.9.1 Android (15/4.0.4; 160dpi; 320x480; Sony; MiniPro; mango; semc; en_Us)";
 
 //static NSString* kStringBoundary = @"B17B7707-F82B-480B-A7E0-B55EEEC71473";
@@ -53,6 +58,9 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     DataBaseHandler *errorDB;
     NSInteger number;
     NSString *startTime;
+    
+    NSMutableArray *userArr;
+    
 }
 @property (nonatomic, copy) void (^successLogin)(NSString *code);
 
@@ -68,6 +76,7 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 @property (nonatomic, strong)NSMutableArray *orderNumArr;
 @property (nonatomic, strong)NSMutableDictionary *allOrderDic;
 
+@property (weak, nonatomic) IBOutlet UIButton *changeUserBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *insLoginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *postLikeBtn;
@@ -111,6 +120,8 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    userArr = [NSMutableArray array];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -460,11 +471,68 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 {
     self.likeBtn.enabled = YES;
 }
+- (IBAction)changUserClicked:(id)sender {
+    
+    
+    
+    
+    
+    
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(popShow:) object:sender];
+    [self performSelector:@selector(popShow:) withObject:sender afterDelay:0.3f];
+}
+
+
+- (void)popShow:(UIButton *)sender
+{
+    
+    NSArray *userArray = [userDefault objectForKey:@"userArr"];
+    
+    NSMutableArray *userNameArr = [NSMutableArray array];
+    NSMutableArray *picArr = [NSMutableArray array];
+    NSMutableArray *tokenArr = [NSMutableArray array];
+    NSMutableArray *idArr = [NSMutableArray array];
+    for (NSDictionary *dic in userArray) {
+        [userNameArr addObject:[dic objectForKey:@"userName"]];
+        [picArr addObject:[dic objectForKey:@"userUrl"]];
+        [tokenArr addObject:[dic objectForKey:@"csrftoken"]];
+        [idArr addObject:[dic objectForKey:@"userID"]];
+    }
+
+    
+    CGPoint point = CGPointMake(sender.frame.origin.x + sender.frame.size.width/2, sender.frame.origin.y + sender.frame.size.height);
+    NSArray *titles = @[@"item1", @"选项2", @"选项3"];
+    NSArray *images = @[@"28b.png", @"28b.png", @"28b.png"];
+    PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:userNameArr images:picArr];
+    pop.selectRowAtIndex = ^(NSInteger index){
+        NSLog(@"select index:%d", index);
+        
+//        NSString *string = images[index];
+//        [self.changeUserBtn setImage:[UIImage imageNamed: string] forState:UIControlStateNormal];
+        
+        [self.changeUserBtn sd_setImageWithURL:[NSURL URLWithString:titles[index]] forState:UIControlStateNormal];
+        
+        [self.changeUserBtn setTitle:@"" forState:UIControlStateNormal];
+        
+        
+        
+        self.userID = idArr[index];
+        self.userName = userNameArr[index];
+        self.userUrl = picArr[index];
+        self.csrftoken = tokenArr[index];
+
+        
+        
+    };
+    [pop show];
+}
+
 
 - (IBAction)LikeBtnClicked:(id)sender {
     
 //    [self getMediaInfo];
-    [self downloadTouched:nil];
+//    [self downloadTouched:nil];
+
     
     self.likeBtn.enabled = NO;
     
@@ -488,6 +556,8 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
     NSDictionary *params = @{@"photo_id":orderModel.picid,@"_uuid":@"c952328b-3417-4db6-89d0-094a397d029",@"_uid":self.userID,@"_csrftoken":self.csrftoken};
     
+    
+    
     NSString *sign_body = [self makeApiCallWithMethod:@"Like" Params:params Ssl:NO Use_cookie:self.csrftoken];
     NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
 //    NSString *device_info = @"(15/4.0.4; 160dpi; 320x480; Sony; MiniPro; mango; semc; en_Us)";
@@ -502,6 +572,14 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
     
     
     NSString *likeUrl = [NSString stringWithFormat:@"https://i.instagram.com/api/v1/media/%@/like/?d=0&src=timeline",orderModel.picid];
+    
+    
+    NSString *jsonString = [self dictionaryToJson:params];
+    NSLog(@"jsonString = %@",jsonString);
+    NSString *desJson = [Utility encryptUseDES:jsonString key:@"jfhsghjk"];
+    
+    NSLog(@"test result = %@",[Utility decryptStr:desJson]);
+    
     
     [[AFInstagramManager shareManager] likeRequestWithUrl:likeUrl header:headerDic body:bodyData timeoutInterVal:20.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -542,11 +620,17 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
 - (void)getMediaInfo
 {
     NSString *uuid = [NSString getUniqueStrByUUID];
-    NSString *mediaUrl = [NSString stringWithFormat:@"https://i.instagram.com/api/v1/media/1201294890407817194_2009939090/info/?rank_token=%@_%@&ranked_content=true&",self.userID,uuid];
+    NSString *mediaUrl = [NSString stringWithFormat:@"https://i.instagram.com/api/v1/media/1203347535020682402_2009939090/info/?rank_token=%@_%@&ranked_content=true&",self.userID,uuid];
     kStringBoundary = [NSString getUniqueStrByUUID];
     
     NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
     headerDic = @{@"User-Agent":kUserAgent, @"Content-Type":contentType, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5", @"X-IG-Capabilities" : @"AQ=="};
+    
+    [[AFInstagramManager shareManager] requestDataWithFrontURL:mediaUrl method:@"GET" parameter:nil header:headerDic body:nil timeoutInterval:20.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
     
     [[AFInstagramManager shareManager] likeRequestWithUrl:mediaUrl header:headerDic body:nil timeoutInterVal:20.f result:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -609,14 +693,14 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
         return;
     }
     
-    [self deleteCookieWithKey];
-    [userDefault removeObjectForKey:@"userID"];
-    [userDefault removeObjectForKey:@"userName"];
-    [userDefault removeObjectForKey:ctoken];
+//    [self deleteCookieWithKey];
+//    [userDefault removeObjectForKey:@"userID"];
+//    [userDefault removeObjectForKey:@"userName"];
+//    [userDefault removeObjectForKey:ctoken];
     [self.postLikeBtn setEnabled:NO];
     NSDictionary *params = @{@"username":userName,@"from_reg":@"false",@"password":password};
     NSString *sign_body = [self makeApiCallWithMethod:@"Login" Params:params Ssl:NO Use_cookie:nil];
-    NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
+    NSDictionary *requestBody = @{@"ig_sig_key_version" : @"5", @"signed_body" : sign_body};
     NSMutableData *bodyData = [NSMutableData generatePostBodyWithRequestBody:requestBody Boundary:kStringBoundary];
     NSMutableDictionary *cookieDic = [NSMutableDictionary dictionary];
     [[AFInstagramManager shareManager] loginRequestWithHeader:headerDic body:bodyData timeoutInterVal:kTimeoutInterval result:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -624,6 +708,13 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
         self.userID = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"pk"];
         self.userName = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"username"];
         self.userUrl = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"profile_pic_url"];
+        
+        
+        NSString *username = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"username"];
+        NSString *userid = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"pk"];
+        NSString *userurl = [[responseObject objectForKey:@"logged_in_user"] objectForKey:@"profile_pic_url"];
+
+        
         
         [userDefault setObject:self.userID forKey:@"userID"];
         [userDefault setObject:self.userName forKey:@"userName"];
@@ -638,6 +729,20 @@ static const NSTimeInterval kTimeoutInterval = 20.0;
         }
         self.csrftoken = [cookieDic objectForKey:@"csrftoken"];
         [userDefault setObject:self.csrftoken forKey:ctoken];
+        
+        NSString *csrftoken = [cookieDic objectForKey:@"csrftoken"];
+        
+        NSDictionary *dic = @{@"userName" : username, @"userID" : userid, @"csrftoken" : csrftoken, @"userUrl" : userurl};
+        
+        
+        
+        [userArr addObject:dic];
+        
+        
+        
+        [userDefault setObject:userArr forKey:@"userArr"];
+        
+        
         [self.postLikeBtn setEnabled:YES];
         [userDefault synchronize];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -783,7 +888,7 @@ static int total = 0;
         NSString *mediaId = likeModel.picid;
         NSDictionary *likeParams = @{@"photo_id":mediaId,@"_uuid":@"8E620E94-8CF1-4389-9360-CEDC7742C998",@"_uid":@"2058722339",@"_csrftoken":@"db906fa9a02ee7f28dd510fa7ec3315b"};
         NSString *sign_body = [self makeApiCallWithMethod:@"Like" Params:likeParams Ssl:NO Use_cookie:self.csrftoken];
-        NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
+        NSDictionary *requestBody = @{@"ig_sig_key_version" : @"5", @"signed_body" : sign_body};
         NSMutableData *bodyData = [NSMutableData generatePostBodyWithRequestBody:requestBody Boundary:kStringBoundary];
 
        [[AFInstagramManager shareManager] likeRequestWithUrl:[NSString stringWithFormat: @"https://i.instagram.com/api/v1/media/%@/like/?d=0&src=timeline", mediaId] header:headerDic body:bodyData timeoutInterVal:kTimeoutInterval result:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -852,7 +957,7 @@ static int total1 = 0;
         NSString *userID = followModel.userid;
         NSDictionary *followParams = @{@"_uuid":@"8E620E94-8CF1-4389-9360-CEDC7742C998",@"_uid":@"2058722339",@"user_id":userID,@"_csfrtoken":@"db906fa9a02ee7f28dd510fa7ec3315b"};
         NSString *sign_body = [self makeApiCallWithMethod:@"Follow" Params:followParams Ssl:NO Use_cookie:self.csrftoken];
-        NSDictionary *requestBody = @{@"ig_sig_key_version" : @"4", @"signed_body" : sign_body};
+        NSDictionary *requestBody = @{@"ig_sig_key_version" : @"5", @"signed_body" : sign_body};
         NSMutableData *bodyData = [NSMutableData generatePostBodyWithRequestBody:requestBody Boundary:kStringBoundary];
         
         [[AFInstagramManager shareManager] followRequestWithUrl:[NSString stringWithFormat: @"https://i.instagram.com/api/v1/friendships/create/%@/", userID] header:headerDic body:bodyData timeoutInterVal:kTimeoutInterval result:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -1162,7 +1267,7 @@ static int total1 = 0;
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request =[serializer requestWithMethod:@"GET" URLString:requestURL parameters:paramDic error:nil];
     
-    NSDictionary *headerDDIC = @{@"User-Agent":kUserAgent, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5" ,@"X-IG-Capabilities": @"Fw==", @"Range" : @"bytes=0-", @"Accept" : @"*/*", @"Accept-Encoding":@"gzip, deflate", @"Connection" : @"keep-alive"};
+    NSDictionary *headerDDIC = @{@"User-Agent":kUserAgent, @"Accept-Language" : @"en;q=1, zh-Hans;q=0.9, ja;q=0.8, zh-Hant;q=0.7, fr;q=0.6, de;q=0.5" ,@"X-IG-Capabilities": @"Fw==", @"Range" : @"bytes=524288-", @"Accept" : @"*/*", @"Accept-Encoding":@"gzip, deflate", @"Connection" : @"keep-alive"};
     
     if (header) {
         
@@ -1173,7 +1278,6 @@ static int total1 = 0;
         }
         
     }
-    
     //以下是手动创建request方法 AFQueryStringFromParametersWithEncoding有时候会保存
     //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
     //   NSMutableURLRequest *request =[[[AFHTTPRequestOperationManager manager]requestSerializer]requestWithMethod:@"POST" URLString:requestURL parameters:paramaterDic error:nil];
@@ -1197,8 +1301,8 @@ static int total1 = 0;
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation,responseObject);
         NSLog(@"下载成功");
-        
         [self openmovie];
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         success(operation,error);
@@ -1214,10 +1318,10 @@ static int total1 = 0;
 
 //使用
 - (void)downloadTouched:(id)sender {
-    NSString *savedPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/10586205_1566600096989951_1827874209_n.mp4"];
+    NSString *savedPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/12824776_842594372553027_1066062924_n.mp4"];
     //    NSDictionary *paramaterDic= @{@"jsonString":[@{@"userid":@"2332"} JSONString]?:@""};
     [self downloadFileWithOption:nil
-                   withInferface:@"http://scontent.cdninstagram.com/t50.2886-16/10586205_1566600096989951_1827874209_n.mp4"
+                   withInferface:@"http://scontent-frt3-1.cdninstagram.com/t50.2886-16/12676546_1570847623232817_1199465571_n.mp4"
                        savedPath:savedPath
                           header:headerDic
                  downloadSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -1227,55 +1331,30 @@ static int total1 = 0;
                  } progress:^(float progress) {
                      
                  }];
+//    1205529485932228520_2009939090
 }
 
 
 -(void)openmovie
-
 {
-    
-    MPMoviePlayerViewController *movie = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:@"http://scontent.cdninstagram.com/t50.2886-16/10586205_1566600096989951_1827874209_n.mp4"]];
-    
+    MPMoviePlayerViewController *movie = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:@"http://scontent-frt3-1.cdninstagram.com/t50.2886-16/12327431_451395618404205_872631175_s.mp4"]];
     [movie.moviePlayer prepareToPlay];
-    
     [self presentMoviePlayerViewControllerAnimated:movie];
-    
     [movie.moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
-    
-    
-    
     [movie.view setBackgroundColor:[UIColor clearColor]];
-        
     [movie.view setFrame:self.view.bounds];
     
     [[NSNotificationCenter defaultCenter]addObserver:self
-     
-     
-     
-                                           selector:@selector(movieFinishedCallback:)
-     
-     
-     
-                                               name:MPMoviePlayerPlaybackDidFinishNotification
-     
-     
-     
-                                             object:movie.moviePlayer];
-    
-    
-    
+                                        selector:@selector(movieFinishedCallback:)
+                                        name:MPMoviePlayerPlaybackDidFinishNotification
+                                        object:movie.moviePlayer];
 }
 
 -(void)movieFinishedCallback:(NSNotification*)notify{
-
     // 视频播放完或者在presentMoviePlayerViewControllerAnimated下的Done按钮被点击响应的通知。
-    
     MPMoviePlayerController* theMovie = [notify object];
-    
     [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:theMovie];
-    
     [self dismissMoviePlayerViewControllerAnimated];
-    
 }
 
 
@@ -1283,5 +1362,8 @@ static int total1 = 0;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 @end

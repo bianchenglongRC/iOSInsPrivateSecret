@@ -271,4 +271,24 @@ NSString *getCategoryName(int index)
 }
 
 
+CGFloat getLength(CGFloat length)
+{
+    if (ScreenHeight > 480) {
+        length = (length*ScreenWidth)/320.0;
+    }
+    return length;
+}
+
+CGRect getFrameWithRect(CGFloat x,CGFloat y,CGFloat width,CGFloat height)
+{
+    if (ScreenHeight > 480) {
+        x = (x*ScreenWidth)/320.0;
+        width = (width*ScreenWidth)/320.0;
+        y = (y*ScreenHeight)/568.0;
+        height = (height*ScreenHeight)/568.0;
+    }
+    CGRect rect = CGRectMake(x, y, width, height);
+    return rect;
+}
+
 @end

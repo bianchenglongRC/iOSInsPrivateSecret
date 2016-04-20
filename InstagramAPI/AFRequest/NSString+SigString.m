@@ -28,6 +28,9 @@
     return jsonString;
 }
 
+
+
+
 + (NSString *)getUniqueStrByUUID
 {
     CFUUIDRef uuidObj = CFUUIDCreate(nil);//create a new UUID
